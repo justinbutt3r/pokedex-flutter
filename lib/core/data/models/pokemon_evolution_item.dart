@@ -14,7 +14,7 @@ class PokemonEvolutionItem {
     this.tradeEvolution,
     this.whileHolding,
     this.otherDetail,
-    required this.pokemon,
+    this.pokemon,
     required this.evolvesInto,
   });
 
@@ -26,7 +26,7 @@ class PokemonEvolutionItem {
   final bool? tradeEvolution;
   final String? whileHolding;
   final String? otherDetail;
-  final PokemonSummary pokemon;
+  final PokemonSummary? pokemon;
   final List<PokemonEvolutionItem> evolvesInto;
 
   //evolvesinto

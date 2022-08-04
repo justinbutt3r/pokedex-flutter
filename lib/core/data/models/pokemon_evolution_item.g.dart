@@ -17,7 +17,9 @@ PokemonEvolutionItem _$PokemonEvolutionItemFromJson(
       tradeEvolution: json['tradeEvolution'] as bool?,
       whileHolding: json['whileHolding'] as String?,
       otherDetail: json['otherDetail'] as String?,
-      pokemon: PokemonSummary.fromJson(json['pokemon'] as Map<String, dynamic>),
+      pokemon: json['pokemon'] == null
+          ? null
+          : PokemonSummary.fromJson(json['pokemon'] as Map<String, dynamic>),
       evolvesInto: (json['evolvesInto'] as List<dynamic>)
           .map((e) => PokemonEvolutionItem.fromJson(e as Map<String, dynamic>))
           .toList(),

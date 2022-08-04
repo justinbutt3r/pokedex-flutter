@@ -1,14 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/blocs/pokemonFetch/pokemon_fetch_cubit.dart';
 import '../../../core/data/models/pokemon_item.dart';
+import '../../../utils/types.dart';
 import '../../shared/widgets/loader.dart';
 import '../widgets/battled_condition.dart';
 import '../widgets/description_widget.dart';
 import '../widgets/detail_header.dart';
+import '../widgets/evolution_list.dart';
 import '../widgets/generic_info.dart';
 import '../widgets/pokemon_abilities.dart';
 import '../widgets/stat_list.dart';
@@ -30,17 +30,6 @@ class _DetailLayoutState extends State<DetailLayout> {
     super.dispose();
   }
 
-  // @override
-  // void initState() {
-  //   _pageController.addListener(() {
-  //     setState(() {
-  //       currentPageValue = _pageController.page?.toInt() ?? 0;
-  //     });
-  //   });
-
-  //   super.initState();
-  // }
-
   void goToPage(int pageNumber) {
     setState(() {
       _pageController.animateToPage(pageNumber,
@@ -51,7 +40,6 @@ class _DetailLayoutState extends State<DetailLayout> {
 
   @override
   Widget build(BuildContext context) {
-    inspect(currentPageValue);
     return BlocBuilder<PokemonFetchCubit, PokemonFetchState>(
       builder: (context, state) {
         if (state is PokemonFetchLoading) {
@@ -66,6 +54,7 @@ class _DetailLayoutState extends State<DetailLayout> {
           );
         } else if (state is PokemonFetchLoaded) {
           final Pokemon pokemon = state.pokemon;
+          final Color color = getTypeColor(pokemon.types[0].name);
           return DefaultTabController(
             length: 3,
             child: NestedScrollView(
@@ -111,6 +100,7 @@ class _DetailLayoutState extends State<DetailLayout> {
                               satk: pokemon.satk,
                               sdef: pokemon.sdef,
                               spd: pokemon.spd,
+                              color: color,
                             ),
                             PokemonAbilities(
                               pokemonAbilities: pokemon.abilities,
@@ -123,7 +113,10 @@ class _DetailLayoutState extends State<DetailLayout> {
                       ),
                     ],
                   ),
-                  const Text('2'),
+                  EvolutionList(
+                    evolutionList: pokemon.evolutionItem,
+                    currentSelected: pokemon.apiId,
+                  ),
                   const Text('3'),
                 ],
               ),

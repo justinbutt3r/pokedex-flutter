@@ -6,21 +6,23 @@ import '../../../utils/types.dart';
 const double LABEL_WIDTH = 50.0;
 
 class StatList extends StatelessWidget {
-  const StatList(
-      {Key? key,
-      required this.hp,
-      required this.atk,
-      required this.def,
-      required this.satk,
-      required this.sdef,
-      required this.spd})
-      : super(key: key);
+  const StatList({
+    Key? key,
+    required this.hp,
+    required this.atk,
+    required this.def,
+    required this.satk,
+    required this.sdef,
+    required this.spd,
+    this.color = Colors.white,
+  }) : super(key: key);
   final int hp;
   final int atk;
   final int def;
   final int satk;
   final int sdef;
   final int spd;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -41,28 +43,34 @@ class StatList extends StatelessWidget {
           StatItem(
             maxValue: 255.0,
             value: hp,
+            color: color,
           ),
           StatItem(
             label: 'atk',
             value: atk,
+            color: color,
           ),
           StatItem(
             label: 'def',
             maxValue: 250,
             value: def,
+            color: color,
           ),
           StatItem(
             label: 'satk',
             value: satk,
+            color: color,
           ),
           StatItem(
             label: 'sdef',
             maxValue: 250,
             value: sdef,
+            color: color,
           ),
           StatItem(
             label: 'spd',
             value: spd,
+            color: color,
           ),
         ],
       ),
@@ -72,11 +80,16 @@ class StatList extends StatelessWidget {
 
 class StatItem extends StatelessWidget {
   const StatItem(
-      {Key? key, this.label = 'hp', this.value = 0, this.maxValue = 200.0})
+      {Key? key,
+      this.label = 'hp',
+      this.value = 0,
+      this.maxValue = 200.0,
+      required this.color})
       : super(key: key);
   final String label;
   final int value;
   final double maxValue;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +104,7 @@ class StatItem extends StatelessWidget {
           StatValue(
             value: value,
           ),
-          StatIndicator(
-            value: value,
-            maxValue: maxValue,
-          ),
+          StatIndicator(value: value, maxValue: maxValue, color: color),
         ],
       ),
     );
@@ -127,10 +137,12 @@ class StatValue extends StatelessWidget {
 }
 
 class StatIndicator extends StatelessWidget {
-  const StatIndicator({Key? key, this.value = 0, this.maxValue = 200.0})
+  const StatIndicator(
+      {Key? key, this.value = 0, this.maxValue = 200.0, required this.color})
       : super(key: key);
   final int value;
   final double maxValue;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +155,7 @@ class StatIndicator extends StatelessWidget {
       percent: percentage,
       barRadius: const Radius.circular(20.0),
       backgroundColor: Colors.black,
-      progressColor: grassColor,
+      progressColor: color,
     );
   }
 }

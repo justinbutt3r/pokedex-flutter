@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import '../../../utils/theme.dart';
 
 class PokemonErrorWidget extends StatelessWidget {
-  const PokemonErrorWidget({Key? key, this.message = ''}) : super(key: key);
+  const PokemonErrorWidget(
+      {Key? key, this.message = '', this.showBackButton = true})
+      : super(key: key);
   final String message;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +23,18 @@ class PokemonErrorWidget extends StatelessWidget {
             message,
             style: largeTextStyle,
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'go back',
-              style: smallTextStyle.copyWith(
-                color: Colors.white,
+          if (showBackButton == true)
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'go back',
+                style: smallTextStyle.copyWith(
+                  color: Colors.white,
+                ),
               ),
-            ),
-          )
+            )
         ],
       ),
     );
