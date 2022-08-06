@@ -15,6 +15,7 @@ PokemonSummary _$PokemonSummaryFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       apiId: json['apiId'] as int,
       image: json['image'] as String? ?? '',
+      pokemonId: json['pokemonId'] as int? ?? -1,
     );
 
 Map<String, dynamic> _$PokemonSummaryToJson(PokemonSummary instance) =>
@@ -23,5 +24,6 @@ Map<String, dynamic> _$PokemonSummaryToJson(PokemonSummary instance) =>
       '_id': instance.id,
       'name': instance.name,
       'apiId': instance.apiId,
+      'pokemonId': instance.pokemonId,
       'image': instance.image,
     };

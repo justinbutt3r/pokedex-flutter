@@ -37,6 +37,7 @@ class Pokemon {
     required this.isDefault,
     required this.generation,
     this.evolutionItem,
+    this.voiceLine = '',
     // this.moves,
     // this.forms,
     // this.evolution,
@@ -66,6 +67,7 @@ class Pokemon {
   final bool isDefault;
   final int generation;
   final PokemonEvolutionItem? evolutionItem;
+  final String voiceLine;
 
   // ignore: sort_constructors_first
   factory Pokemon.fromJson(Map<String, dynamic> json) =>

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../core/data/models/pokemon_item.dart';
+import '../../../core/data/models/pokemon_summary.dart';
 import '../../../core/models/detail_page_arguments.dart';
 import '../../../utils/theme.dart';
 import '../../../utils/types.dart';
 
 class PreviewCard extends StatelessWidget {
   const PreviewCard({Key? key, required this.pokemon}) : super(key: key);
-  final Pokemon pokemon;
+  final PokemonSummary pokemon;
 
   @override
   Widget build(BuildContext context) {

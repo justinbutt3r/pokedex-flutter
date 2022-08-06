@@ -69,6 +69,7 @@ class _DetailLayoutState extends State<DetailLayout> {
                       pokemon: pokemon,
                       onPageClick: goToPage,
                       currentPage: currentPageValue,
+                      voiceLine: pokemon.voiceLine,
                     ),
                   )
                 ];

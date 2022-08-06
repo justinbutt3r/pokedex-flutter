@@ -13,7 +13,7 @@ class PokemonListLoading extends PokemonListState {}
 
 class PokemonListLoaded extends PokemonListState {
   const PokemonListLoaded({required this.pokemonList});
-  final List<Pokemon> pokemonList;
+  final List<PokemonSummary> pokemonList;
 
   @override
   List<Object> get props => [pokemonList];

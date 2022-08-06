@@ -5,6 +5,7 @@ import '../../../core/data/models/pokemon_item.dart';
 import 'category_button.dart';
 import 'header_info.dart';
 import 'type_gradient.dart';
+import 'voiceline_player.dart';
 
 class DetailHeader implements SliverPersistentHeaderDelegate {
   DetailHeader({
@@ -13,6 +14,7 @@ class DetailHeader implements SliverPersistentHeaderDelegate {
     required this.pokemon,
     required this.onPageClick,
     this.currentPage = 0,
+    this.voiceLine = '',
   });
   @override
   final double maxExtent;
@@ -21,6 +23,7 @@ class DetailHeader implements SliverPersistentHeaderDelegate {
   final Pokemon pokemon;
   final void Function(int pageNumber) onPageClick;
   final int currentPage;
+  final String voiceLine;
 
   @override
   Widget build(
@@ -33,6 +36,9 @@ class DetailHeader implements SliverPersistentHeaderDelegate {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
+        VoicelinePlayer(
+          voiceLine: voiceLine,
+        ),
         TypeGradient(
           pokemonTypes: pokemon.types,
         ),

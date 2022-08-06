@@ -38,6 +38,7 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) => Pokemon(
           ? null
           : PokemonEvolutionItem.fromJson(
               json['evolutionItem'] as Map<String, dynamic>),
+      voiceLine: json['voiceLine'] as String? ?? '',
     );
 
 Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
@@ -65,4 +66,5 @@ Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
       'isDefault': instance.isDefault,
       'generation': instance.generation,
       'evolutionItem': instance.evolutionItem,
+      'voiceLine': instance.voiceLine,
     };

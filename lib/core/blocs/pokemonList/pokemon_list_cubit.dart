@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/pokemon_item.dart';
+import '../../data/models/pokemon_summary.dart';
 import '../../data/models/result_errors.dart';
 import '../../data/pokemon_repository.dart';
 
@@ -15,7 +15,7 @@ class PokemonListCubit extends Cubit<PokemonListState> {
     emit(PokemonListLoading());
 
     try {
-      final List<Pokemon> pokemonList =
+      final List<PokemonSummary> pokemonList =
           await pokemonRepository.getAllPokemon(generation);
       emit(PokemonListLoaded(pokemonList: pokemonList));
     } catch (err) {

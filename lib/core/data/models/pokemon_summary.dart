@@ -12,6 +12,7 @@ class PokemonSummary {
     required this.name,
     required this.apiId,
     this.image = '',
+    this.pokemonId = -1,
   });
 
   final List<PokemonTypeReference> types;
@@ -19,6 +20,7 @@ class PokemonSummary {
   final String id;
   final String name;
   final int apiId;
+  final int pokemonId;
   final String image;
 
   // ignore: sort_constructors_first

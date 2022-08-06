@@ -1,4 +1,5 @@
 import 'models/pokemon_item.dart';
+import 'models/pokemon_summary.dart';
 import 'services/pokemon_service.dart';
 
 class PokemonRepository {
@@ -10,6 +11,6 @@ class PokemonRepository {
 
   Future<Pokemon> getPokemon(int id) async => service.getPokemon(id);
 
-  Future<List<Pokemon>> getAllPokemon(int generation) async =>
+  Future<List<PokemonSummary>> getAllPokemon(int generation) async =>
       service.getPokemonByGeneration(generation);
 }

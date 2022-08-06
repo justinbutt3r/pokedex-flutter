@@ -25,7 +25,6 @@ class EvolutionList extends StatelessWidget {
       );
     } else {
       final List<Widget> l = getEvolutionList(evolutionList!, currentSelected);
-      print('currentSelected ${currentSelected.toString()}');
       return CustomScrollView(
         physics: const ClampingScrollPhysics(),
         slivers: [
@@ -82,7 +81,7 @@ class EvolutionItem extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(
+              Navigator.popAndPushNamed(
                 context,
                 '/detail',
                 arguments: DetailPageArguments(id: id),
