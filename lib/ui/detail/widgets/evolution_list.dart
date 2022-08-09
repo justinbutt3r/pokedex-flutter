@@ -143,7 +143,6 @@ List<Widget> getEvolutionList(PokemonEvolutionItem list, int currentSelected) {
 List<Widget> getEvolutionListInner(
     List<PokemonEvolutionItem> list, int currentSelected) {
   List<Widget> items = [];
-  inspect(list.length);
   if (list.length == 1) {
     final PokemonSummary? pokemon = list[0].pokemon;
     if (pokemon != null) {
@@ -184,7 +183,6 @@ List<Widget> getEvolutionListInner(
         return const PokemonErrorWidget();
       }
     }).toList();
-    // inspect(rows);
 
     items.add(
       Padding(

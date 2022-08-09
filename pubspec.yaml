@@ -39,6 +39,7 @@ dependencies:
   dio_cache_interceptor: ^3.3.0
   expandable_page_view: ^1.0.17
   audioplayers: ^1.0.1
+  flutter_svg_provider: ^1.0.3
 
 dev_dependencies:
   flutter_test:

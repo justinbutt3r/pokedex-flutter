@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 const TextStyle labelTextStyle = TextStyle(
   fontSize: 18.0,
-  color: Colors.white,
 );
 
 const TextStyle bigTextStyle = TextStyle(

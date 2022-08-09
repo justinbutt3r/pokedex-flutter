@@ -39,11 +39,15 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) => Pokemon(
           : PokemonEvolutionItem.fromJson(
               json['evolutionItem'] as Map<String, dynamic>),
       voiceLine: json['voiceLine'] as String? ?? '',
+      moves: (json['moves'] as List<dynamic>)
+          .map((e) => PokemonMoveReference.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
       'types': instance.types,
       'abilities': instance.abilities,
+      'moves': instance.moves,
       'name': instance.name,
       'apiName': instance.apiName,
       'apiId': instance.apiId,

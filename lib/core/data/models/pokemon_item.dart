@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'pokemon_ability.dart';
 import 'pokemon_evolution_item.dart';
+import 'pokemon_move_reference.dart';
 import 'pokemon_type.dart';
 
 part 'pokemon_item.g.dart';
@@ -38,13 +39,14 @@ class Pokemon {
     required this.generation,
     this.evolutionItem,
     this.voiceLine = '',
-    // this.moves,
+    required this.moves,
     // this.forms,
     // this.evolution,
     // this.varieties,
   });
   final List<PokemonType> types;
   final List<PokemonAbility> abilities;
+  final List<PokemonMoveReference> moves;
   final String name;
   final String apiName;
   final int apiId;
