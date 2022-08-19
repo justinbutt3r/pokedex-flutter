@@ -1,4 +1,12 @@
 class ListPageArgument {
-  ListPageArgument({this.generation = 1});
-  final int generation;
+  ListPageArgument({
+    this.mythical,
+    this.legendary,
+    this.generation,
+    this.type,
+  });
+  final int? generation;
+  final String? type;
+  final bool? mythical;
+  final bool? legendary;
 }

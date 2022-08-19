@@ -11,12 +11,29 @@ class PokemonListCubit extends Cubit<PokemonListState> {
       : super(PokemonListInitial());
   final PokemonRepository pokemonRepository;
 
-  Future<void> getPokemonList(int generation) async {
+  Future<void> getPokemonList({
+    int? generation,
+    String? type,
+    bool? isMythical,
+    bool? isLegendary,
+  }) async {
     emit(PokemonListLoading());
-
     try {
-      final List<PokemonSummary> pokemonList =
-          await pokemonRepository.getAllPokemon(generation);
+      List<PokemonSummary> pokemonList = [];
+      if (generation != null) {
+        pokemonList = await pokemonRepository.getAllPokemon(generation);
+      }
+      if (type != null) {
+        pokemonList = await pokemonRepository.getAllPokemonByType(type);
+      }
+      if (isMythical != null) {
+        pokemonList =
+            await pokemonRepository.getAllPokemonByFlag(isMythical: isMythical);
+      }
+      if (isLegendary != null) {
+        pokemonList = await pokemonRepository.getAllPokemonByFlag(
+            isLegendary: isLegendary);
+      }
       emit(PokemonListLoaded(pokemonList: pokemonList));
     } catch (err) {
       if (err is ErrorGettingPokemon) {

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
@@ -26,10 +27,29 @@ class EvolutionList extends StatelessWidget {
     } else {
       final List<Widget> l = getEvolutionList(evolutionList!, currentSelected);
       return CustomScrollView(
+        semanticChildCount: l.length,
         physics: const ClampingScrollPhysics(),
         slivers: [
           SliverList(
-            delegate: SliverChildListDelegate(l),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                final int itemIndex = index ~/ 2;
+                if (index.isEven) {
+                  return l[itemIndex];
+                }
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 32.0),
+                  child: const Icon(Icons.arrow_downward),
+                );
+              },
+              semanticIndexCallback: (Widget widget, int localIndex) {
+                if (localIndex.isEven) {
+                  return localIndex ~/ 2;
+                }
+                return null;
+              },
+              childCount: math.max(0, l.length * 2 - 1),
+            ),
           ),
         ],
       );
@@ -56,8 +76,8 @@ class EvolutionItem extends StatelessWidget {
     final double sideMar = (sideMargin == true) ? 32.0 : 0;
     return Center(
       child: Container(
-        width: 200,
-        height: 200,
+        width: 250,
+        height: 250,
         margin: EdgeInsets.only(
           right: sideMar,
           bottom: 32.0,
@@ -72,12 +92,12 @@ class EvolutionItem extends StatelessWidget {
               ),
           ],
           borderRadius: const BorderRadius.all(
-            Radius.circular(100),
+            Radius.circular(300),
           ),
         ),
         child: ClipRRect(
           borderRadius: const BorderRadius.all(
-            Radius.circular(100),
+            Radius.circular(300),
           ),
           child: InkWell(
             onTap: () {
@@ -137,6 +157,7 @@ List<Widget> getEvolutionList(PokemonEvolutionItem list, int currentSelected) {
   } catch (e) {
     inspect(e);
   }
+  inspect(items);
   return items;
 }
 
@@ -172,12 +193,22 @@ List<Widget> getEvolutionListInner(
         final List<PokemonType> types = pokemon.types
             .map((e) => PokemonType(id: e.id, name: e.name))
             .toList();
-        return EvolutionItem(
-          pokemonTypes: types,
-          id: pokemon.apiId,
-          image: pokemon.image,
-          sideMargin: list.length - 1 > index,
-          selected: pokemon.apiId == currentSelected,
+        return Column(
+          children: [
+            EvolutionItem(
+              pokemonTypes: types,
+              id: pokemon.apiId,
+              image: pokemon.image,
+              sideMargin: list.length - 1 > index,
+              selected: pokemon.apiId == currentSelected,
+            ),
+            if (e.evolvesInto.isNotEmpty)
+              Container(
+                margin: const EdgeInsets.only(bottom: 32.0),
+                child: const Icon(Icons.arrow_downward),
+              ),
+            ...getEvolutionListInner(e.evolvesInto, currentSelected)
+          ],
         );
       } else {
         return const PokemonErrorWidget();

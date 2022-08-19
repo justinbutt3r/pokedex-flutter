@@ -5,7 +5,7 @@ import '../../../core/data/models/pokemon_move.dart';
 import '../../../utils/helpers.dart';
 import '../../../utils/theme.dart';
 import '../../../utils/types.dart';
-import '../../shared/widgets/card_flip.dart';
+import 'card_flip.dart';
 
 class MoveItem extends StatelessWidget {
   const MoveItem({
@@ -59,6 +59,7 @@ class GenericInfo extends StatelessWidget {
         color: lighten(color, 25),
         borderRadius: BorderRadius.circular(10.0),
       ),
+      width: double.infinity,
       height: 150.0,
       margin: const EdgeInsets.only(bottom: 10.0),
       child: Column(
@@ -88,6 +89,7 @@ class GenericInfo extends StatelessWidget {
                 horizontal: 8.0,
                 vertical: 8.0,
               ),
+              width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: Svg(getTypeImage(type),
@@ -98,7 +100,9 @@ class GenericInfo extends StatelessWidget {
               ),
               child: Text(
                 description.replaceAll(RegExp('\n'), ' '),
-                style: labelTextStyle,
+                style: labelTextStyle.copyWith(
+                  shadows: textShadow,
+                ),
               ),
             ),
           ),
@@ -114,7 +118,7 @@ class ExtraInfo extends StatelessWidget {
     required this.color,
     this.accuracy = 0,
     this.pp = 0,
-    required this.power,
+    this.power,
     required this.target,
     this.effectChance,
     required this.damageClass,
@@ -142,6 +146,7 @@ class ExtraInfo extends StatelessWidget {
           opacity: 0.3,
         ),
       ),
+      width: double.infinity,
       height: 150.0,
       margin: const EdgeInsets.only(bottom: 10.0),
       child: Row(
@@ -160,7 +165,7 @@ class ExtraInfo extends StatelessWidget {
           else
             ValueLabel(
               label: 'Power',
-              value: power.toString(),
+              value: power?.toString() ?? 'Varies',
             ),
           ValueLabel(
             label: 'Accuracy',
@@ -192,11 +197,16 @@ class ValueLabel extends StatelessWidget {
         children: [
           Text(
             value,
-            style: labelTextStyle,
+            style: labelTextStyle.copyWith(
+              shadows: textShadow,
+            ),
           ),
           Text(
             label,
-            style: labelTextStyle.copyWith(fontWeight: FontWeight.bold),
+            style: labelTextStyle.copyWith(
+              fontWeight: FontWeight.bold,
+              shadows: textShadow,
+            ),
           ),
         ],
       ),

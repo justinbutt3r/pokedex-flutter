@@ -11,10 +11,10 @@ class GenerationCard extends StatelessWidget {
     return InkWell(
       child: Container(
         width: double.infinity,
-        height: 150.0,
+        height: 75.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Colors.red,
+          color: Colors.red[200],
         ),
         child: Center(
           child: Text(

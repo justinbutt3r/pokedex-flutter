@@ -18,23 +18,22 @@ class BattleCondition extends StatelessWidget {
         defenseEffectiveCalculator(pokemonTypes);
 
     final childList = [
-      BattleConditionGrid(
-        typeList: defense['weak'] ?? [],
-        title: 'Weak to',
-      ),
-      BattleConditionGrid(
-        typeList: defense['strong'] ?? [],
-        title: 'Resistant to',
-      ),
+      if ((defense['weak']!).isNotEmpty)
+        BattleConditionGrid(
+          typeList: defense['weak'] ?? [],
+          title: 'Weak to',
+        ),
+      if ((defense['strong']!).isNotEmpty)
+        BattleConditionGrid(
+          typeList: defense['strong'] ?? [],
+          title: 'Resistant to',
+        ),
+      if ((defense['immune']!).isNotEmpty)
+        BattleConditionGrid(
+          typeList: defense['immune'] ?? [],
+          title: 'Immune to',
+        ),
     ];
-
-    if ((defense['immune'] ?? []).length > 1) {
-      childList.add(BattleConditionGrid(
-        typeList: defense['immune'] ?? [],
-        title: 'Immune to',
-      ));
-    }
-
     return Container(
       padding: const EdgeInsets.all(16.0),
       child: Column(

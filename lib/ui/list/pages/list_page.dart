@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/blocs/pokemonList/pokemon_list_cubit.dart';
 import '../../../core/data/pokemon_repository.dart';
 import '../../../core/data/services/pokemon_service.dart';
 import '../../../core/models/list_page_arguments.dart';
+import '../../../utils/string_extensions.dart';
 import '../widgets/filter_drawer.dart';
 import 'list_layout.dart';
 
@@ -16,9 +18,13 @@ class ListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args =
-        ModalRoute.of(context)?.settings.arguments as ListPageArgument?;
-    // ignore: unnecessary_null_comparison
-    final int generation = (args != null) ? args.generation : 1;
+        // ignore: cast_nullable_to_non_nullable
+        ModalRoute.of(context)?.settings.arguments as ListPageArgument;
+    final int? generation = args.generation;
+    final String? type = args.type;
+    final bool? isMythical = args.mythical;
+    final bool? isLegendary = args.legendary;
+
     _scaffoldKey.currentState?.openDrawer();
     return Scaffold(
       key: _scaffoldKey,
@@ -28,12 +34,44 @@ class ListPage extends StatelessWidget {
           BlocProvider<PokemonListCubit>(
             create: (context) => PokemonListCubit(
               pokemonRepository: PokemonRepository(service: pokemonService),
-            )..getPokemonList(generation),
+            )..getPokemonList(
+                generation: generation,
+                type: type,
+                isLegendary: isLegendary,
+                isMythical: isMythical,
+              ),
           ),
         ],
-        child:
-            ListLayout(generation: generation, scaffoldReference: _scaffoldKey),
+        child: ListLayout(
+            label: getLabel(
+              generation: generation,
+              type: type,
+              isLegendary: isLegendary,
+              isMythical: isMythical,
+            ),
+            scaffoldReference: _scaffoldKey),
       ),
     );
   }
+}
+
+String getLabel(
+    {int? generation, String? type, bool? isMythical, bool? isLegendary}) {
+  if (generation != null) {
+    return 'Generation ${generation.toString()}';
+  }
+
+  if (type != null) {
+    return type.toCapitalized();
+  }
+
+  if (isMythical != null) {
+    return 'Mythical';
+  }
+
+  if (isLegendary != null) {
+    return 'Legendary';
+  }
+
+  return '';
 }

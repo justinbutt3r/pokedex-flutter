@@ -9,9 +9,9 @@ import '../widgets/preview_grid.dart';
 
 class ListLayout extends StatelessWidget {
   const ListLayout(
-      {Key? key, required this.generation, required this.scaffoldReference})
+      {Key? key, required this.scaffoldReference, required this.label})
       : super(key: key);
-  final int generation;
+  final String label;
   final GlobalKey<ScaffoldState> scaffoldReference;
 
   @override
@@ -46,7 +46,7 @@ class ListLayout extends StatelessWidget {
                             child: const Icon(Icons.arrow_back_ios),
                           ),
                           Text(
-                            'Generation $generation',
+                            label,
                             style: largeTextStyle,
                           ),
                         ],
