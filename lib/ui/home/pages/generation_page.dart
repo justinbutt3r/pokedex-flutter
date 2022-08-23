@@ -1,3 +1,4 @@
+import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/theme.dart';
@@ -9,28 +10,30 @@ class GenerationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = ScrollController();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top: 50.0, left: 10.0, right: 10.0),
         child: Column(
           children: [
             const PageHeading(title: 'By Generation'),
-            const SizedBox(
-              height: 50,
-            ),
             Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(top: 10.0),
-                shrinkWrap: true,
-                itemCount: 9,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: sizeBetween),
-                    child: GenerationCard(
-                      generation: index + 1,
-                    ),
-                  );
-                },
+              child: FadingEdgeScrollView.fromScrollView(
+                child: ListView.builder(
+                  controller: controller,
+                  padding: const EdgeInsets.only(top: 10.0),
+                  shrinkWrap: true,
+                  itemCount: 9,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: sizeBetween),
+                      child: GenerationCard(
+                        generation: index + 1,
+                      ),
+                    );
+                  },
+                ),
               ),
             )
           ],

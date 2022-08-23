@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../utils/theme.dart';
 
 class GenericInfo extends StatelessWidget {
   const GenericInfo({Key? key, required this.height, required this.weight})
@@ -36,13 +35,13 @@ class InfoItem extends StatelessWidget {
       children: [
         Text(
           label,
-          style: labelTextStyle.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
         Text(
           value,
-          style: smallTextStyle,
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );

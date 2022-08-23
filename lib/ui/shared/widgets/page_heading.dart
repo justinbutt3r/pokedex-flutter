@@ -8,21 +8,26 @@ class PageHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(Icons.arrow_back_ios),
-        ),
-        Expanded(
-          child: Text(
-            title,
-            style: bigTextStyle,
+    return Container(
+      margin: const EdgeInsets.only(
+        bottom: headlineSpace,
+      ),
+      child: Row(
+        children: [
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(Icons.arrow_back_ios),
           ),
-        ),
-      ],
+          Expanded(
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

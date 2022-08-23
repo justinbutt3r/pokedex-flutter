@@ -41,9 +41,9 @@ class BattleCondition extends StatelessWidget {
         children: [
           Text(
             'Battle Conditions',
-            style: bodyTextStyle.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(
             height: sizeBetween,
@@ -69,7 +69,7 @@ class BattleConditionGrid extends StatelessWidget {
       children: [
         Text(
           title,
-          style: labelTextStyle,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         GridView.builder(
           padding: const EdgeInsets.only(top: 20.0, bottom: 32.0),
@@ -111,17 +111,17 @@ class BattleCondtionItem extends StatelessWidget {
             child: Container(
               width: 70.0,
               height: 40.0,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(100.0),
                   topRight: Radius.circular(100.0),
                 ),
-                color: Colors.black,
+                color: Theme.of(context).indicatorColor,
               ),
               child: Center(
                 child: Text(
                   '${removeDecimalZeroFormat(type.value)}X',
-                  style: smallTextStyle,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
             ),

@@ -34,9 +34,6 @@ class AbilityListLayout extends StatelessWidget {
             child: Column(
               children: [
                 const PageHeading(title: 'Abilities'),
-                const SizedBox(
-                  height: 50,
-                ),
                 Expanded(
                   child: FadingEdgeScrollView.fromScrollView(
                     child: ListView.builder(

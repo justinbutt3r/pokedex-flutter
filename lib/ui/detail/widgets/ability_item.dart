@@ -20,14 +20,14 @@ class AbilityItem extends StatelessWidget {
               padding: const EdgeInsets.only(right: 8.0),
               child: Text(
                 ability.name,
-                style: bodyTextStyle,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
           ),
           Expanded(
             child: Text(
               ability.description,
-              style: smallTextStyle,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
           ),
         ],

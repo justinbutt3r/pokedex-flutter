@@ -26,13 +26,13 @@ class _FilterDrawerState extends State<FilterDrawer> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const SizedBox(
+                SizedBox(
                   height: 50,
                   child: DrawerHeader(
                     padding: EdgeInsets.zero,
                     child: Text(
                       'Filters',
-                      style: largeTextStyle,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
                 ),
@@ -51,15 +51,15 @@ class _FilterDrawerState extends State<FilterDrawer> {
                         contentPadding: EdgeInsets.zero,
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               'Types',
-                              style: resultTextStyle,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: sizeBetween,
                             ),
-                            TypeFilter(),
+                            const TypeFilter(),
                           ],
                         ),
                       ),

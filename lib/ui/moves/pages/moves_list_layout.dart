@@ -35,9 +35,6 @@ class MovesListLayout extends StatelessWidget {
             child: Column(
               children: [
                 PageHeading(title: label),
-                const SizedBox(
-                  height: 50,
-                ),
                 Expanded(
                   child: FadingEdgeScrollView.fromScrollView(
                     child: ListView.builder(

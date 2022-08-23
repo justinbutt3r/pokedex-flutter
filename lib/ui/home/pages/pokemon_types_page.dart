@@ -25,9 +25,6 @@ class PokemonTypesPage extends StatelessWidget {
         child: Column(
           children: [
             const PageHeading(title: 'By Types'),
-            const SizedBox(
-              height: 50,
-            ),
             Expanded(
               child: GridView.builder(
                 padding: EdgeInsets.zero,

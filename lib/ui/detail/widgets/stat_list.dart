@@ -32,9 +32,9 @@ class StatList extends StatelessWidget {
         children: [
           Text(
             'Stats',
-            style: bodyTextStyle.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(
             height: sizeBetween,
@@ -78,13 +78,13 @@ class StatList extends StatelessWidget {
 }
 
 class StatItem extends StatelessWidget {
-  const StatItem(
-      {Key? key,
-      this.label = 'hp',
-      this.value = 0,
-      this.maxValue = 200.0,
-      required this.color})
-      : super(key: key);
+  const StatItem({
+    Key? key,
+    this.label = 'hp',
+    this.value = 0,
+    this.maxValue = 200.0,
+    required this.color,
+  }) : super(key: key);
   final String label;
   final int value;
   final double maxValue;
@@ -117,7 +117,10 @@ class StatName extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 50.0,
-      child: Text(label.toUpperCase(), style: labelTextStyle),
+      child: Text(
+        label.toUpperCase(),
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
     );
   }
 }
@@ -130,7 +133,10 @@ class StatValue extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 50.0,
-      child: Text('$value', style: labelTextStyle),
+      child: Text(
+        '$value',
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
     );
   }
 }
@@ -153,7 +159,7 @@ class StatIndicator extends StatelessWidget {
       animationDuration: 1000,
       percent: percentage,
       barRadius: const Radius.circular(20.0),
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).indicatorColor,
       progressColor: color,
     );
   }

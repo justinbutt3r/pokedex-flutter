@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/data/models/pokemon_summary.dart';
 import '../../../core/models/detail_page_arguments.dart';
-import '../../../utils/theme.dart';
 import '../../../utils/types.dart';
 
 class PreviewCard extends StatelessWidget {
@@ -17,7 +16,9 @@ class PreviewCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.0),
-        border: Border.all(color: Colors.grey),
+        border: Border.all(
+          color: Colors.grey,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.5),
@@ -26,7 +27,7 @@ class PreviewCard extends StatelessWidget {
             offset: const Offset(1, 1), // changes position of shadow,
           ),
         ],
-        color: Colors.grey[800],
+        color: Theme.of(context).cardColor,
       ),
       child: Material(
         color: Colors.transparent,
@@ -55,7 +56,7 @@ class PreviewCard extends StatelessWidget {
                   pokemon.pokemonId > -1
                       ? pokemon.pokemonId.toString().padLeft(3, '0')
                       : '000',
-                  style: labelTextStyle,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
               if (pokemon.image.isNotEmpty)

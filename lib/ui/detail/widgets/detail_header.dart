@@ -58,7 +58,7 @@ class DetailHeader implements SliverPersistentHeaderDelegate {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 5.0),
             decoration: BoxDecoration(
-              color: Colors.grey[900],
+              color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30.0),
                 topRight: Radius.circular(30.0),

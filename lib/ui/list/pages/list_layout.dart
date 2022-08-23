@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/blocs/pokemonList/pokemon_list_cubit.dart';
-import '../../../utils/theme.dart';
 import '../../shared/widgets/error_widget.dart';
 import '../../shared/widgets/loader.dart';
+import '../../shared/widgets/page_heading.dart';
 import '../widgets/preview_grid.dart';
 
 class ListLayout extends StatelessWidget {
@@ -29,50 +29,17 @@ class ListLayout extends StatelessWidget {
             ),
           );
         } else if (state is PokemonListLoaded && state.pokemonList.isNotEmpty) {
-          return SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(Icons.arrow_back_ios),
-                          ),
-                          Text(
-                            label,
-                            style: largeTextStyle,
-                          ),
-                        ],
-                      ),
-                      Wrap(
-                        spacing: 10.0,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              scaffoldReference.currentState?.openEndDrawer();
-                            },
-                            child: const Icon(
-                              Icons.filter_list,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+          return Padding(
+            padding: const EdgeInsets.only(top: 50.0, left: 10.0, right: 10.0),
+            child: Column(
+              children: [
+                PageHeading(title: label),
+                Expanded(
+                  child: PreviewGrid(
+                    pokemonList: state.pokemonList,
                   ),
-                  Expanded(
-                    child: PreviewGrid(
-                      pokemonList: state.pokemonList,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         }

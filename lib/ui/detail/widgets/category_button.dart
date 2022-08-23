@@ -25,19 +25,16 @@ class CategoryButton extends StatelessWidget {
           onClick(pageNumber);
         },
         style: OutlinedButton.styleFrom(
-          primary: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
-          ),
           side: BorderSide(
             color: isActive
-                ? Theme.of(context).primaryColorLight
-                : Theme.of(context).primaryColorDark,
+                ? Theme.of(context).toggleableActiveColor
+                : Theme.of(context).primaryColorLight,
           ),
         ),
         child: Text(
           title,
-          style: TextStyle(color: isActive ? Colors.white : Colors.white54),
+          style: Theme.of(context).textTheme.bodySmall,
+          // style: TextStyle(color: isActive ? Colors.white : Colors.white54),
         ),
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/data/models/pokemon_ability.dart';
-import '../../../utils/theme.dart';
 import 'ability_item.dart';
 
 class PokemonAbilities extends StatelessWidget {
@@ -18,9 +17,9 @@ class PokemonAbilities extends StatelessWidget {
         children: [
           Text(
             'Abilities',
-            style: bodyTextStyle.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           ListView.builder(
             padding: const EdgeInsets.only(top: 10.0),

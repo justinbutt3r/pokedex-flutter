@@ -1,41 +1,43 @@
 import 'package:flutter/material.dart';
 
-const TextStyle labelTextStyle = TextStyle(
-  fontSize: 18.0,
-);
+// const TextStyle labelTextStyle = TextStyle(
+//   fontSize: 18.0,
+// );
 
-const TextStyle bigTextStyle = TextStyle(
-  fontSize: 50,
-  fontWeight: FontWeight.w900,
-);
+// const TextStyle bigTextStyle = TextStyle(
+//   fontSize: 50,
+//   fontWeight: FontWeight.w900,
+// );
 
-const TextStyle largeTextStyle = TextStyle(
-  fontSize: 25,
-  fontWeight: FontWeight.bold,
-);
+// const TextStyle largeTextStyle = TextStyle(
+//   fontSize: 25,
+//   fontWeight: FontWeight.bold,
+// );
 
-const TextStyle titleTextStyle = TextStyle(
-  fontSize: 50,
-  fontWeight: FontWeight.bold,
-);
+// const TextStyle titleTextStyle = TextStyle(
+//   fontSize: 50,
+//   fontWeight: FontWeight.bold,
+// );
 
-const TextStyle resultTextStyle = TextStyle(
-  fontSize: 22,
-  fontWeight: FontWeight.bold,
-);
+// const TextStyle resultTextStyle = TextStyle(
+//   fontSize: 22,
+//   fontWeight: FontWeight.bold,
+// );
 
-const TextStyle bmiTextStyle = TextStyle(
-  fontSize: 100,
-  fontWeight: FontWeight.bold,
-);
+// const TextStyle bmiTextStyle = TextStyle(
+//   fontSize: 100,
+//   fontWeight: FontWeight.bold,
+// );
 
-const TextStyle bodyTextStyle = TextStyle(
-  fontSize: 18,
-);
+// const TextStyle bodyTextStyle = TextStyle(
+//   fontSize: 18,
+// );
 
-const TextStyle smallTextStyle = TextStyle(
-  fontSize: 16,
-);
+// const TextStyle smallTextStyle = TextStyle(
+//   fontSize: 16,
+// );
+
+const double headlineSpace = 30.0;
 
 const double iconSize = 80.0;
 const double sizeBetween = 15.0;

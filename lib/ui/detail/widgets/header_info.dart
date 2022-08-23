@@ -33,24 +33,26 @@ class HeaderInfo extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: const Icon(
+                    child: Icon(
                       Icons.arrow_back_ios,
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                   Text(
                     name,
-                    style: largeTextStyle.copyWith(
-                      shadows: textShadow,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          shadows: textShadow,
+                          color: Theme.of(context).primaryColor,
+                        ),
                   ),
                 ],
               ),
               Text(
                 pokemonId.toString().padLeft(3, '0'),
-                style: labelTextStyle.copyWith(
-                  shadows: textShadow,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      shadows: textShadow,
+                      color: Theme.of(context).primaryColor,
+                    ),
               ),
             ],
           ),
@@ -64,9 +66,10 @@ class HeaderInfo extends StatelessWidget {
                   ),
                   Text(
                     species,
-                    style: labelTextStyle.copyWith(
-                      shadows: textShadow,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          shadows: textShadow,
+                          color: Theme.of(context).primaryColor,
+                        ),
                   ),
                 ],
               ),
@@ -79,7 +82,7 @@ class HeaderInfo extends StatelessWidget {
                         padding: const EdgeInsets.all(1.5),
                         child: SvgPicture.asset(
                           getTypeImage(t.name),
-                          color: Colors.white,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     )

@@ -20,12 +20,12 @@ class AbilityCard extends StatelessWidget {
           children: [
             Text(
               ability.name,
-              style: largeTextStyle,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             if (ability.flavour.isNotEmpty)
               Text(
                 ability.flavour,
-                style: smallTextStyle,
+                style: Theme.of(context).textTheme.caption,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
@@ -45,7 +45,7 @@ class AbilityCard extends StatelessWidget {
                     controller: controllerChild,
                     child: Text(
                       ability.description,
-                      style: bodyTextStyle,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
                 ),

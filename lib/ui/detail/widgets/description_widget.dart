@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import '../../../utils/theme.dart';
+import 'package:flutter/material.dart';
 
 class DetailDescription extends StatelessWidget {
   const DetailDescription({Key? key, required this.description})
@@ -12,7 +11,7 @@ class DetailDescription extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Text(
         description.replaceAll(RegExp('\n'), ' '),
-        style: bodyTextStyle,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
     );
   }

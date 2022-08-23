@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/models/list_page_arguments.dart';
-import '../../../utils/theme.dart';
 
 class GenerationCard extends StatelessWidget {
   const GenerationCard({Key? key, this.generation = 1}) : super(key: key);
@@ -19,7 +18,7 @@ class GenerationCard extends StatelessWidget {
         child: Center(
           child: Text(
             'Generation $generation',
-            style: largeTextStyle,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
       ),

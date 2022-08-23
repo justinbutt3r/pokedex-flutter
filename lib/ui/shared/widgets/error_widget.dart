@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../utils/theme.dart';
 
 class PokemonErrorWidget extends StatelessWidget {
   const PokemonErrorWidget(
@@ -21,19 +20,15 @@ class PokemonErrorWidget extends StatelessWidget {
           ),
           Text(
             message,
-            style: largeTextStyle,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           if (showBackButton == true)
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text(
-                'go back',
-                style: smallTextStyle.copyWith(
-                  color: Colors.white,
-                ),
-              ),
+              child:
+                  Text('go back', style: Theme.of(context).textTheme.bodySmall),
             )
         ],
       ),

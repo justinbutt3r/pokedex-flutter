@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/theme.dart';
-
 class RangeSelector extends StatefulWidget {
   const RangeSelector(
       {Key? key, required this.label, this.max = 50, this.min = 0})
@@ -39,7 +37,7 @@ class _RangeSelectorState extends State<RangeSelector> {
       children: [
         Text(
           widget.label,
-          style: resultTextStyle,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         RangeSlider(
           values: _currentRangeValues,

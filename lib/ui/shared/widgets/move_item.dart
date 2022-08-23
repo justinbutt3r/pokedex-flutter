@@ -80,7 +80,7 @@ class GenericInfo extends StatelessWidget {
             width: double.infinity,
             child: Text(
               name,
-              style: largeTextStyle,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
           Expanded(
@@ -100,9 +100,9 @@ class GenericInfo extends StatelessWidget {
               ),
               child: Text(
                 description.replaceAll(RegExp('\n'), ' '),
-                style: labelTextStyle.copyWith(
-                  shadows: textShadow,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      shadows: textShadow,
+                    ),
               ),
             ),
           ),
@@ -197,16 +197,16 @@ class ValueLabel extends StatelessWidget {
         children: [
           Text(
             value,
-            style: labelTextStyle.copyWith(
-              shadows: textShadow,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  shadows: textShadow,
+                ),
           ),
           Text(
             label,
-            style: labelTextStyle.copyWith(
-              fontWeight: FontWeight.bold,
-              shadows: textShadow,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  shadows: textShadow,
+                ),
           ),
         ],
       ),
