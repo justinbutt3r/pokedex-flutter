@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "838810558965",
+    "project_id": "butt3r-pokedex",
+    "storage_bucket": "butt3r-pokedex.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838810558965:android:45f9edc123f132fcbb80bc",
+        "android_client_info": {
+          "package_name": "com.example.pokedex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838810558965-62vqkbs4nu01bsueomnn7c6faaucngu9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWjAgWBWA7ST0DH7skVNItJmjaDVmDZeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838810558965-62vqkbs4nu01bsueomnn7c6faaucngu9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

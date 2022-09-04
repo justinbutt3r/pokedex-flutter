@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/models/home_page_obejct.dart';
 import '../../../core/services/theme_manager.dart';
+import '../../../firebase.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
             top: 50.0, left: 32.0, right: 32.0, bottom: 10.0),
         child: Column(
           children: [
+            const FireBaseProvider(),
             Center(
               child: InkWell(
                 onTap: () {

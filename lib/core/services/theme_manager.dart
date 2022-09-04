@@ -8,8 +8,8 @@ class ThemeNotifier extends ChangeNotifier {
   }
 
   Future<void> getThemeFromStorage() async {
-    final String themeData =
-        await _storageManager.readData('themeMode') as String;
+    final String? themeData =
+        await _storageManager.readData('themeMode') as String?;
     if (themeData == null) {
       themeMode = ThemeMode.system;
     } else if (themeData == 'light') {
