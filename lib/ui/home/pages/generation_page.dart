@@ -20,7 +20,7 @@ class GenerationPage extends StatelessWidget {
             const PageHeading(title: 'By Generation'),
             Expanded(
               child: FadingEdgeScrollView.fromScrollView(
-                child: ListView.builder(
+                child: GridView.builder(
                   controller: controller,
                   padding: const EdgeInsets.only(top: 10.0),
                   shrinkWrap: true,
@@ -33,6 +33,12 @@ class GenerationPage extends StatelessWidget {
                       ),
                     );
                   },
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 400.0,
+                    crossAxisSpacing: 20.0,
+                    mainAxisSpacing: 20.0,
+                    mainAxisExtent: 150,
+                  ),
                 ),
               ),
             )

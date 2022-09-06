@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -28,7 +27,9 @@ class _FireBaseProviderState extends State<FireBaseProvider> {
     super.initState();
     _firebaseMessaging = FirebaseMessaging.instance;
     _firebaseMessaging.getToken().then((value) {
-      print(value);
+      if (kDebugMode) {
+        print(value);
+      }
     });
 
     flutterLocalNotificationsPlugin
@@ -45,12 +46,9 @@ class _FireBaseProviderState extends State<FireBaseProvider> {
     FirebaseMessaging.onMessage.listen((RemoteMessage event) {
       final RemoteNotification notification = event.notification!;
 
-      print(":::::::::::::::::::::::::::: $notification");
-
       // AppleNotification apple = event.notification!.apple!;
       final AndroidNotification androidNotification =
           event.notification!.android!;
-      inspect(androidNotification);
       // if (notification != null && androidNotification != null) {
       //   ///Show local notification
       //   sendNotification(title: notification.title!, body: notification.body);

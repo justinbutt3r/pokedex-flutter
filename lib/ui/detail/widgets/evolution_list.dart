@@ -157,7 +157,6 @@ List<Widget> getEvolutionList(PokemonEvolutionItem list, int currentSelected) {
   } catch (e) {
     inspect(e);
   }
-  inspect(items);
   return items;
 }
 

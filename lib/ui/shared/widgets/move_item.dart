@@ -61,7 +61,6 @@ class GenericInfo extends StatelessWidget {
       ),
       width: double.infinity,
       height: 150.0,
-      margin: const EdgeInsets.only(bottom: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -148,7 +147,6 @@ class ExtraInfo extends StatelessWidget {
       ),
       width: double.infinity,
       height: 150.0,
-      margin: const EdgeInsets.only(bottom: 10.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -18,11 +18,11 @@ class PreviewGrid extends StatelessWidget {
         child: GridView.builder(
           controller: controller,
           padding: EdgeInsets.zero,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 120,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 4 / 5,
+            childAspectRatio: 4 / 5.5,
           ),
           itemCount: pokemonList.length,
           shrinkWrap: true,

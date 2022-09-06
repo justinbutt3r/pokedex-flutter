@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -42,7 +40,6 @@ class MyApp extends StatelessWidget {
       create: (context) => ThemeNotifier(),
       builder: (context, _) {
         final themeProvider = Provider.of<ThemeNotifier>(context);
-        inspect(themeProvider);
         if (themeProvider.valueSet) {
           return MaterialApp(
             title: 'Pokedex',

@@ -20,7 +20,7 @@ class TypeIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.circular(500),
         color: typeVariable.color,
       ),
       child: InkWell(

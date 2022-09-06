@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,10 +18,8 @@ class AbilityListCubit extends Cubit<AbilityListState> {
     try {
       final List<PokemonAbility> abilityList =
           await pokemonRepository.getAllAbilities();
-      inspect(abilityList);
       emit(AbilityListLoaded(abilityList: abilityList));
     } catch (err) {
-      inspect(err);
       if (err is ErrorGettingPokemon) {
         emit(AbilityListError(message: err.error));
       } else {
