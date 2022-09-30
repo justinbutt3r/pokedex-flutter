@@ -11,9 +11,11 @@ class MoveItem extends StatelessWidget {
   const MoveItem({
     Key? key,
     required this.move,
+    this.margin = EdgeInsets.zero,
   }) : super(key: key);
 
   final PokemonMove move;
+  final EdgeInsets margin;
   @override
   Widget build(BuildContext context) {
     final Color color = getTypeColor(move.type.name);
@@ -23,6 +25,7 @@ class MoveItem extends StatelessWidget {
         name: move.name,
         description: move.description,
         type: move.type.name,
+        margin: margin,
       ),
       back: ExtraInfo(
         color: color,
@@ -33,6 +36,7 @@ class MoveItem extends StatelessWidget {
         effectChance: move.effectChance,
         damageClass: move.damageClass,
         type: move.type.name,
+        margin: margin,
       ),
     );
   }
@@ -45,12 +49,14 @@ class GenericInfo extends StatelessWidget {
     required this.description,
     required this.name,
     required this.type,
+    required this.margin,
   }) : super(key: key);
 
   final Color color;
   final String description;
   final String name;
   final String type;
+  final EdgeInsets margin;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +67,7 @@ class GenericInfo extends StatelessWidget {
       ),
       width: double.infinity,
       height: 150.0,
+      margin: margin,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -122,6 +129,7 @@ class ExtraInfo extends StatelessWidget {
     this.effectChance,
     required this.damageClass,
     required this.type,
+    required this.margin,
   }) : super(key: key);
 
   final Color color;
@@ -132,6 +140,7 @@ class ExtraInfo extends StatelessWidget {
   final int? effectChance;
   final String damageClass;
   final String type;
+  final EdgeInsets margin;
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +156,7 @@ class ExtraInfo extends StatelessWidget {
       ),
       width: double.infinity,
       height: 150.0,
+      margin: margin,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -13,6 +13,13 @@ class PokemonSummary {
     required this.apiId,
     this.image = '',
     this.pokemonId = -1,
+    this.formName = '',
+    this.hp = 0,
+    this.atk = 0,
+    this.def = 0,
+    this.satk = 0,
+    this.sdef = 0,
+    this.spd = 0,
   });
 
   final List<PokemonTypeReference> types;
@@ -22,6 +29,13 @@ class PokemonSummary {
   final int apiId;
   final int pokemonId;
   final String image;
+  final String formName;
+  final int hp;
+  final int atk;
+  final int def;
+  final int satk;
+  final int sdef;
+  final int spd;
 
   // ignore: sort_constructors_first
   factory PokemonSummary.fromJson(Map<String, dynamic> json) =>

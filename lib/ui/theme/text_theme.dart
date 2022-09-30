@@ -22,3 +22,10 @@ const TextStyle bodyMedium = TextStyle(
 const TextStyle bodySmall = TextStyle(
   fontSize: 16,
 );
+
+const TextStyle labelMedium = TextStyle(
+  fontSize: 12,
+);
+const TextStyle labelSmall = TextStyle(
+  fontSize: 10,
+);

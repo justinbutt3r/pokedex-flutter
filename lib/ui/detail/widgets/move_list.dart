@@ -22,6 +22,7 @@ class MoveList extends StatelessWidget {
 
         return MoveItem(
           move: move,
+          margin: const EdgeInsets.only(bottom: 10.0),
         );
       },
     );

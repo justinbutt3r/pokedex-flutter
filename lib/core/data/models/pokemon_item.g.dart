@@ -42,6 +42,17 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) => Pokemon(
       moves: (json['moves'] as List<dynamic>)
           .map((e) => PokemonMoveReference.fromJson(e as Map<String, dynamic>))
           .toList(),
+      formName: json['formName'] as String? ?? '',
+      forms: (json['forms'] as List<dynamic>?)
+              ?.map(
+                  (e) => PokemonFormDetails.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      varieties: (json['varieties'] as List<dynamic>?)
+              ?.map((e) =>
+                  PokemonVarietyReference.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
@@ -71,4 +82,7 @@ Map<String, dynamic> _$PokemonToJson(Pokemon instance) => <String, dynamic>{
       'generation': instance.generation,
       'evolutionItem': instance.evolutionItem,
       'voiceLine': instance.voiceLine,
+      'varieties': instance.varieties,
+      'formName': instance.formName,
+      'forms': instance.forms,
     };

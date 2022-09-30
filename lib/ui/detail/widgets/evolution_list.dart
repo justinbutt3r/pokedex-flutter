@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 import '../../../core/data/models/pokemon_evolution_item.dart';
 import '../../../core/data/models/pokemon_summary.dart';
 import '../../../core/data/models/pokemon_type.dart';
-import '../../../core/models/detail_page_arguments.dart';
 import '../../shared/widgets/error_widget.dart';
-import 'type_gradient.dart';
+import 'evolution_item.dart';
 
 class EvolutionList extends StatelessWidget {
   const EvolutionList(
@@ -54,81 +53,6 @@ class EvolutionList extends StatelessWidget {
         ],
       );
     }
-  }
-}
-
-class EvolutionItem extends StatelessWidget {
-  const EvolutionItem({
-    Key? key,
-    this.image = '',
-    required this.id,
-    required this.pokemonTypes,
-    this.sideMargin = false,
-    this.selected = false,
-  }) : super(key: key);
-  final List<PokemonType> pokemonTypes;
-  final String image;
-  final int id;
-  final bool sideMargin;
-  final bool selected;
-  @override
-  Widget build(BuildContext context) {
-    final double sideMar = (sideMargin == true) ? 32.0 : 0;
-    return Center(
-      child: Container(
-        width: 250,
-        height: 250,
-        margin: EdgeInsets.only(
-          right: sideMar,
-          bottom: 32.0,
-        ),
-        decoration: BoxDecoration(
-          boxShadow: [
-            if (selected)
-              const BoxShadow(
-                color: Color.fromRGBO(255, 215, 0, 0.25),
-                spreadRadius: 5,
-                blurRadius: 10,
-              ),
-          ],
-          borderRadius: const BorderRadius.all(
-            Radius.circular(300),
-          ),
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(300),
-          ),
-          child: InkWell(
-            onTap: () {
-              Navigator.popAndPushNamed(
-                context,
-                '/detail',
-                arguments: DetailPageArguments(id: id),
-              );
-            },
-            child: Stack(
-              children: <Widget>[
-                TypeGradient(pokemonTypes: pokemonTypes),
-                Center(
-                  child: FractionallySizedBox(
-                    widthFactor: 0.75,
-                    heightFactor: 0.75,
-                    child: (image.isNotEmpty)
-                        ? Image.network(
-                            image,
-                          )
-                        : Image.asset(
-                            'assets/images/open-pokeball.png',
-                          ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
 
@@ -192,22 +116,25 @@ List<Widget> getEvolutionListInner(
         final List<PokemonType> types = pokemon.types
             .map((e) => PokemonType(id: e.id, name: e.name))
             .toList();
-        return Column(
-          children: [
-            EvolutionItem(
-              pokemonTypes: types,
-              id: pokemon.apiId,
-              image: pokemon.image,
-              sideMargin: list.length - 1 > index,
-              selected: pokemon.apiId == currentSelected,
-            ),
-            if (e.evolvesInto.isNotEmpty)
-              Container(
-                margin: const EdgeInsets.only(bottom: 32.0),
-                child: const Icon(Icons.arrow_downward),
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              EvolutionItem(
+                pokemonTypes: types,
+                id: pokemon.apiId,
+                image: pokemon.image,
+                sideMargin: list.length - 1 > index,
+                selected: pokemon.apiId == currentSelected,
               ),
-            ...getEvolutionListInner(e.evolvesInto, currentSelected)
-          ],
+              if (e.evolvesInto.isNotEmpty)
+                Container(
+                  margin: const EdgeInsets.only(bottom: 32.0),
+                  child: const Icon(Icons.arrow_downward),
+                ),
+              ...getEvolutionListInner(e.evolvesInto, currentSelected)
+            ],
+          ),
         );
       } else {
         return const PokemonErrorWidget();
@@ -219,8 +146,12 @@ List<Widget> getEvolutionListInner(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: rows,
+          child: Container(
+            color: Colors.black,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: rows,
+            ),
           ),
         ),
       ),

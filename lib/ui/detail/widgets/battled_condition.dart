@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/data/models/pokemon_type.dart';
 import '../../../core/models/type_effectiveness.dart';
+import '../../../utils/breakpoints.dart';
 import '../../../utils/effectiveness.dart';
 import '../../../utils/helpers.dart';
 import '../../../utils/theme.dart';
 import '../../../utils/types.dart';
 
 class BattleCondition extends StatelessWidget {
-  const BattleCondition({Key? key, required this.pokemonTypes})
-      : super(key: key);
+  const BattleCondition({
+    Key? key,
+    required this.pokemonTypes,
+    this.padding = const EdgeInsets.all(16.0),
+  }) : super(key: key);
   final List<PokemonType> pokemonTypes;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +40,7 @@ class BattleCondition extends StatelessWidget {
         ),
     ];
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,40 +61,47 @@ class BattleCondition extends StatelessWidget {
 }
 
 class BattleConditionGrid extends StatelessWidget {
-  const BattleConditionGrid(
-      {Key? key, required this.typeList, required this.title})
-      : super(key: key);
+  const BattleConditionGrid({
+    Key? key,
+    required this.typeList,
+    required this.title,
+  }) : super(key: key);
   final List<TypeEffectiveness> typeList;
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        GridView.builder(
-          padding: const EdgeInsets.only(top: 20.0, bottom: 32.0),
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 5.0,
-            mainAxisSpacing: 5.0,
-            childAspectRatio: 11 / 5,
-          ),
-          itemCount: typeList.length,
-          shrinkWrap: true,
-          itemBuilder: (BuildContext context, int index) {
-            final TypeEffectiveness type = typeList[index];
-            return BattleCondtionItem(
-              type: type,
-            );
-          },
-        ),
-      ],
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final int count = constraints.maxWidth > large ? 5 : 3;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            GridView.builder(
+              padding: const EdgeInsets.only(top: 20.0, bottom: 32.0),
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: count,
+                crossAxisSpacing: 5.0,
+                mainAxisSpacing: 10.0,
+                mainAxisExtent: 50.0,
+              ),
+              itemCount: typeList.length,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                final TypeEffectiveness type = typeList[index];
+                return BattleCondtionItem(
+                  type: type,
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

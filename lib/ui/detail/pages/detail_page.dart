@@ -16,7 +16,7 @@ class DetailPage extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as DetailPageArguments?;
     // ignore: unnecessary_null_comparison
     // ignore: unused_local_variable
-    final int id = (args != null) ? args.id : 1;
+    final int id = (args != null) ? args.id : 6;
     return Scaffold(
       body: MultiBlocProvider(
         providers: [

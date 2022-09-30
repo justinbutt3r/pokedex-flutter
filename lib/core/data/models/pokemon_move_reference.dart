@@ -4,12 +4,13 @@ import 'pokemon_move.dart';
 
 part 'pokemon_move_reference.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class PokemonMoveReference {
   PokemonMoveReference({
     required this.move,
     required this.atLevel,
   });
+  @JsonKey(includeIfNull: false)
   final PokemonMove move;
   final int atLevel;
 

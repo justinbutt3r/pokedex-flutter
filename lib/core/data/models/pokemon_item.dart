@@ -1,8 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
+
 import 'pokemon_ability.dart';
 import 'pokemon_evolution_item.dart';
+import 'pokemon_form_details.dart';
 import 'pokemon_move_reference.dart';
 import 'pokemon_type.dart';
+import 'pokemon_variety_reference.dart';
 
 part 'pokemon_item.g.dart';
 
@@ -40,9 +43,10 @@ class Pokemon {
     this.evolutionItem,
     this.voiceLine = '',
     required this.moves,
-    // this.forms,
+    this.formName = '',
+    this.forms = const [],
     // this.evolution,
-    // this.varieties,
+    this.varieties = const [],
   });
   final List<PokemonType> types;
   final List<PokemonAbility> abilities;
@@ -70,6 +74,9 @@ class Pokemon {
   final int generation;
   final PokemonEvolutionItem? evolutionItem;
   final String voiceLine;
+  final List<PokemonVarietyReference> varieties;
+  final String formName;
+  final List<PokemonFormDetails> forms;
 
   // ignore: sort_constructors_first
   factory Pokemon.fromJson(Map<String, dynamic> json) =>

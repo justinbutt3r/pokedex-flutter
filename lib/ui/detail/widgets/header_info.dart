@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/data/models/pokemon_type.dart';
+import '../../../utils/string_extensions.dart';
 import '../../../utils/theme.dart';
 import '../../../utils/types.dart';
 
 class HeaderInfo extends StatelessWidget {
-  const HeaderInfo(
-      {Key? key,
-      required this.name,
-      required this.pokemonId,
-      required this.species,
-      required this.pokemonTypes})
-      : super(key: key);
+  const HeaderInfo({
+    Key? key,
+    required this.name,
+    required this.pokemonId,
+    required this.species,
+    required this.pokemonTypes,
+    this.hideArrow = false,
+  }) : super(key: key);
   final String name;
   final int pokemonId;
   final String species;
   final List<PokemonType> pokemonTypes;
+  final bool hideArrow;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +32,16 @@ class HeaderInfo extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      color: Theme.of(context).primaryColor,
+                  if (!hideArrow)
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
-                  ),
                   Text(
                     name,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -61,9 +65,10 @@ class HeaderInfo extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const SizedBox(
-                    width: 25.0,
-                  ),
+                  if (!hideArrow)
+                    const SizedBox(
+                      width: 25.0,
+                    ),
                   Text(
                     species,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -80,9 +85,12 @@ class HeaderInfo extends StatelessWidget {
                         width: 20.0,
                         height: 20.0,
                         padding: const EdgeInsets.all(1.5),
-                        child: SvgPicture.asset(
-                          getTypeImage(t.name),
-                          color: Theme.of(context).primaryColor,
+                        child: Tooltip(
+                          message: t.name.toCapitalized(),
+                          child: SvgPicture.asset(
+                            getTypeImage(t.name),
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
                       ),
                     )

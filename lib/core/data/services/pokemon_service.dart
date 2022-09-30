@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import '../../services/cache_options.dart';
@@ -53,6 +55,7 @@ class PokemonService {
         throw ErrorGettingPokemon('Error getting pokemon');
       }
     } catch (e) {
+      inspect(e);
       if (e is DioError) {
         throw ErrorGettingPokemon('Error fetching data');
       } else {

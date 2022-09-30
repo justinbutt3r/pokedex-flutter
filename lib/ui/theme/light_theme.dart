@@ -31,6 +31,12 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     bodySmall: bodySmall.copyWith(
       color: Colors.black,
     ),
+    labelMedium: labelMedium.copyWith(
+      color: Colors.black,
+    ),
+    labelSmall: labelSmall.copyWith(
+      color: Colors.black,
+    ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(

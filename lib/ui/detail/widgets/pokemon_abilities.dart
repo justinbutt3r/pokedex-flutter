@@ -4,14 +4,18 @@ import '../../../core/data/models/pokemon_ability.dart';
 import 'ability_item.dart';
 
 class PokemonAbilities extends StatelessWidget {
-  const PokemonAbilities({Key? key, required this.pokemonAbilities})
-      : super(key: key);
+  const PokemonAbilities({
+    Key? key,
+    required this.pokemonAbilities,
+    this.padding = const EdgeInsets.all(16.0),
+  }) : super(key: key);
   final List<PokemonAbility> pokemonAbilities;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

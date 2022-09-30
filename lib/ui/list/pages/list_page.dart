@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,11 +17,11 @@ class ListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LPA =
+    final lpa =
         // ignore: cast_nullable_to_non_nullable
         ModalRoute.of(context)?.settings.arguments;
 
-    final args = LPA != null ? LPA as ListPageArgument : ListPageArgument();
+    final args = lpa != null ? lpa as ListPageArgument : ListPageArgument();
     final int? generation = args.generation;
     final String? type = args.type;
     final bool? isMythical = args.mythical;
